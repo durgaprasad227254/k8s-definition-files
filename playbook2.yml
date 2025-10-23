@@ -1,0 +1,12 @@
+---
+- name: copy password file to all remote servers
+  hosts: all
+  tasks:
+    - name: copy password file
+      copy: 
+        src: /etc/passwd
+        dest: /tmp
+        owner: ravi
+        group: root
+        mode: 755
+...        

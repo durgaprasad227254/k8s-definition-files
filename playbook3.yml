@@ -1,0 +1,10 @@
+---
+- name: clone git repo to remote servers
+  hosts: all
+  tasks:
+    - name: download git repo
+      git:
+        repo: https://github.com/IntelliqDevops/Kubernetes9.git
+        dest: /tmp/gitk8s
+...          
+
