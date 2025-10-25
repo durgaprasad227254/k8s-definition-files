@@ -1,0 +1,23 @@
+---
+- name: Uninstall Docker from all servers
+  hosts: all
+  become: yes
+  tasks:
+    - name: Remove Docker packages
+      package:
+        name:
+          - docker
+          - docker-engine
+          - docker.io
+          - containerd
+          - runc
+        state: absent
+
+    - name: Remove Docker directories
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /var/lib/docker
+        - /var/lib/containerd
+...

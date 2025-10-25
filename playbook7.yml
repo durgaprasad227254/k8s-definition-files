@@ -1,0 +1,21 @@
+---
+- name: create auser and close git repo into user home directory
+  hosts: all
+  tasks:
+    - name: create auser
+      user:
+        name: Ram
+        password: Rainbow
+        home: /tmp/Ram
+        uid: 1111
+        comment: "a normal user"
+        shell: /bin/bash
+    - name: close git repo in to the user Ram
+      git:
+        repo: https://github.com/IntelliqDevops/maven.git
+        dest: /tmp/Ram/Mygit
+    - name: delete pom.xml file from the cloned repo
+      file:
+        name: /tmp/Ram/Mygit/pom.xml
+        state: absent
+...          
